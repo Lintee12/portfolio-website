@@ -31,6 +31,7 @@ export const action: ActionFunction = async ({ request }) => {
     await transporter.sendMail(mailOptions);
     return json({ message: "Success, email sent!" });
   } catch (error) {
+    console.error(error);
     return json({ error: "There was an issue sending your email." }, { status: 500 });
   }
 };
