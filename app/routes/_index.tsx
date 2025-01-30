@@ -8,8 +8,8 @@ import SkillsAnimation from "~/components/SkillsAnimation";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "My Portfolio" },
-    { name: "description", content: "Welcome to my one-page portfolio!" },
+    { title: "Evan Linton" },
+    { name: "description", content: "Welcome to my portfolio website!" },
   ];
 };
 
