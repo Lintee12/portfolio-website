@@ -48,8 +48,8 @@ const skills = [
 const projects = [
   {
     title: "Portfolio Website",
-    description:
-      "Deployed and managed Windows Server environments, including the setup of DNS, Active Directory, and Group Policies for a company’s internal network.",
+    description: "Created my portfolio website, to show off my skills and projects.",
+    link: "/post/1",
   },
 ];
 
@@ -176,6 +176,7 @@ export default function Index() {
               {projects.map((project) => {
                 return (
                   <Skill
+                    link={project.link || ""}
                     variant="secondary"
                     key={project.title}
                     title={project.title}

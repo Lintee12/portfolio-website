@@ -23,7 +23,6 @@ function Navigation() {
     }
   };
 
-  // Handle scroll and detect if a section is in the middle of the viewport
   useEffect(() => {
     const handleScroll = () => {
       const sizes = sections.map((sectionId) => {
@@ -37,7 +36,6 @@ function Navigation() {
 
       const middleOfScreen = window.innerHeight / 2;
 
-      // Find the section that is closest to the middle of the screen
       const current = sizes.find(
         (section) => section.top <= middleOfScreen && section.top + section.height >= middleOfScreen
       );
@@ -48,6 +46,7 @@ function Navigation() {
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
