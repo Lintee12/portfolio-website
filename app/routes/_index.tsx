@@ -113,7 +113,7 @@ export default function Index() {
               Hi, I'm <span className="text-indigo-600">Evan Linton</span>
             </h1>
             <p className="text-xl text-zinc-700 max-w-2xl mx-auto">
-              A skilled Network Administrator with a background in Programming and IT support. I am
+              An aspiring Network Administrator with a background in Programming and IT support. I am
               able to work efficiently in fast-paced, dynamic environments.
             </p>
           </div>

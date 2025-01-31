@@ -58,7 +58,7 @@ function Navigation() {
   return (
     <div className="fixed bottom-4 right-4 sm:bottom-0 sm:top-0 sm:right-8 flex flex-col items-center justify-center pointer-events-auto">
       <button
-        className="p-3 rounded-full bg-zinc-200/80 hover:bg-zinc-300/80 opacity-75 text-black hover:text-indigo-500 active:outline-none outline-indigo-500 aspect-square transition-all duration-300"
+        className="p-3 rounded-full bg-zinc-200/80 hover:bg-zinc-300/80 text-black hover:text-indigo-500 active:outline-none outline-indigo-500 aspect-square transition-all duration-300"
         onClick={() => scrollToSection(prevSection)}
         aria-label="Previous Section"
       >
