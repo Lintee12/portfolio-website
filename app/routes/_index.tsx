@@ -51,6 +51,12 @@ const projects = [
     description: "Created my portfolio website, to show off my skills and projects.",
     link: "/post/1",
   },
+  {
+    title: "Industry Research",
+    description:
+      "Some research ive done on the IT industry, specifically the Network Administration field.",
+    link: "/post/2",
+  },
 ];
 
 export default function Index() {
@@ -171,7 +177,7 @@ export default function Index() {
         {/* Projects */}
         <section id="projects" className="py-40 bg-white min-h-screen">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold mb-8 text-center">My Projects</h2>
+            <h2 className="text-4xl font-bold mb-8 text-center">My Projects and Assignments</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 max-w-6xl justify-center gap-4 mx-auto">
               {projects.map((project) => {
                 return (
@@ -226,23 +232,23 @@ export default function Index() {
                 ></textarea>
               </div>
 
+              {error && <p className="text-red-500 text-center my-2">{error}</p>}
+              {success && (
+                <p className="text-indigo-500 text-center my-2">Message sent successfully!</p>
+              )}
+
               <Button disabled={loading} className="w-full" type="submit">
                 {loading ? "Sending..." : "Send"}
               </Button>
-              {error && <p className="text-red-500 text-center mt-2">{error}</p>}
-              {success && (
-                <p className="text-indigo-500 text-center mt-2">Message sent successfully!</p>
-              )}
+              <p className="mt-2 text-center">
+                Or Email me directly:{" "}
+                <Link className="text-indigo-500" to={"mailto:lintonevan@gmail.com"}>
+                  lintonevan@gmail.com
+                </Link>
+              </p>
             </form>
           </div>
         </section>
-
-        {/* Footer */}
-        <footer className="bg-white py-6 text-center">
-          <p className="text-zinc-700">
-            &copy; {new Date().getFullYear()} Evan Linton. All rights reserved.
-          </p>
-        </footer>
       </div>
       <Navigation></Navigation>
     </>
