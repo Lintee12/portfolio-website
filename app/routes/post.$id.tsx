@@ -4,6 +4,7 @@ import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import fs from "fs/promises";
 import path from "path";
 import mammoth from "mammoth";
+import * as cheerio from "cheerio";
 
 type LoaderData = {
   title: string;
@@ -25,10 +26,12 @@ export async function loader({ params }: LoaderFunctionArgs): Promise<Response> 
 
     const { value: contentHtml } = await mammoth.convertToHtml({ buffer: fileBuffer });
 
-    const dateModified = new Date().toISOString();
-    const title = `Your Post Title`;
+    const $ = cheerio.load(contentHtml);
+    const title = $("h1").first().text().trim() || "Untitled Post";
 
-    return json<LoaderData>({
+    const dateModified = new Date().toISOString();
+
+    return json({
       title,
       id,
       contentHtml,
@@ -43,7 +46,7 @@ export async function loader({ params }: LoaderFunctionArgs): Promise<Response> 
 export const meta: MetaFunction = ({ data }) => {
   const post: any = data;
   return [
-    { title: post?.title || "Untitled Post" },
+    { title: post.title },
     { name: "description", content: "Welcome to my portfolio website!" },
   ];
 };

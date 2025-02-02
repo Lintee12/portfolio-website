@@ -45,7 +45,7 @@ function SkillsAnimation({ skills }: Props) {
       {currentSkills.map((skill, index) => (
         <span
           key={`${fadeKey}-${index}`}
-          className="skill-item text-indigo-600 transition-transform duration-300 ease-out hover:scale-105 opacity-0"
+          className="skill-item text-indigo-600 transition-transform duration-300 ease-out hover:scale-105 opacity-0 font-normal"
           style={{
             animation: `fadeInOutSequence 7s ease-in-out ${index * 0.5}s infinite`,
           }}
