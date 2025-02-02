@@ -18,8 +18,11 @@ function Skill(props: Props) {
       <div className={`py-6 rounded-lg flex flex-col`}>
         <h3 className={`text-2xl font-bold mb-4`}>{title}</h3>
         <p className="text-zinc-600">{description}</p>
-        <Link to={link} className="text-lg text-indigo-500 pt-2 w-full flex mt-auto">
-          Read More ›
+        <Link
+          to={link}
+          className="text-lg text-indigo-500 w-fit pt-2 flex mt-auto hover:scale-105 transition-transform will-change-transform items-center"
+        >
+          Read More <span className="text-xl pl-1 text-inherit">›</span>
         </Link>
       </div>
     );

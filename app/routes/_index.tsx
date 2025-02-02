@@ -1,11 +1,13 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 import { FormEvent, useState } from "react";
+import { IconContext } from "react-icons";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
 import Button from "~/components/Button";
 import Navigation from "~/components/Navigation";
 import Skill from "~/components/Skill";
 import SkillsAnimation from "~/components/SkillsAnimation";
-
 export const meta: MetaFunction = () => {
   return [
     { title: "Evan Linton" },
@@ -54,7 +56,7 @@ const projects = [
   {
     title: "Industry Research",
     description:
-      "Some research ive done on the IT industry, specifically the Network Administration field.",
+      "Some research i've done on the IT industry, specifically the Network Administration field.",
     link: "/post/2",
   },
 ];
@@ -110,11 +112,14 @@ export default function Index() {
         <section id="hero" className="h-screen flex items-center justify-center text-center">
           <div>
             <h1 className="text-6xl font-bold mb-4">
-              Hi, I'm <span className="text-indigo-600">Evan Linton</span>
+              Hi, I'm{" "}
+              <span className="from-indigo-500 to-violet-500 bg-gradient-to-r bg-clip-text text-transparent">
+                Evan
+              </span>
             </h1>
             <p className="text-xl text-zinc-700 max-w-2xl mx-auto">
-              An aspiring Network Administrator with a background in Programming and IT support. I am
-              able to work efficiently in fast-paced, dynamic environments.
+              An aspiring Network Administrator with a background in Programming and IT support. I
+              am able to work efficiently in fast-paced, dynamic environments.
             </p>
           </div>
         </section>
@@ -195,36 +200,47 @@ export default function Index() {
         </section>
 
         {/* Contact */}
-        <section id="contact" className="py-40 min-h-screen">
+        <section id="contact" className="py-40 min-h-screen bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold mb-8 text-center">Contact Me</h2>
+            <h2 className="text-4xl font-bold mb-8 text-center text-gray-900">Contact Me</h2>
             <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
               <div className="mb-4">
-                <label className="block mb-2">Name</label>
+                <label htmlFor="name" className="block mb-2 text-lg font-semibold text-gray-700">
+                  Name
+                </label>
                 <input
                   type="text"
-                  className="w-full p-2 border rounded outline-none"
+                  id="name"
+                  className="w-full p-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500"
                   required
                   value={name}
                   autoComplete="name"
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
+
               <div className="mb-4">
-                <label className="block mb-2">Email</label>
+                <label htmlFor="email" className="block mb-2 text-lg font-semibold text-gray-700">
+                  Email
+                </label>
                 <input
-                  autoComplete="email"
                   type="email"
-                  className="w-full p-2 border rounded outline-none"
+                  id="email"
+                  autoComplete="email"
+                  className="w-full p-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
+
               <div className="mb-4">
-                <label className="block mb-2">Message</label>
+                <label htmlFor="message" className="block mb-2 text-lg font-semibold text-gray-700">
+                  Message
+                </label>
                 <textarea
-                  className="w-full p-2 border rounded outline-none"
+                  id="message"
+                  className="w-full p-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500"
                   required
                   rows={5}
                   value={message}
@@ -232,20 +248,69 @@ export default function Index() {
                 ></textarea>
               </div>
 
-              {error && <p className="text-red-500 text-center my-2">{error}</p>}
+              {error && (
+                <div className="text-red-600 bg-red-100 p-3 rounded-lg text-center my-4">
+                  {error}
+                </div>
+              )}
               {success && (
-                <p className="text-indigo-500 text-center my-2">Message sent successfully!</p>
+                <div className="text-green-600 bg-green-100 p-3 rounded-lg text-center my-4">
+                  Message sent successfully! I will email you back shortly.
+                </div>
               )}
 
-              <Button disabled={loading} className="w-full" type="submit">
-                {loading ? "Sending..." : "Send"}
+              <Button disabled={loading} type="submit">
+                {loading ? (
+                  <span className="flex justify-center items-center">
+                    <svg
+                      className="animate-spin h-5 w-5 mr-3 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                    >
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="4"
+                        d="M4 12a8 8 0 1 1 8 8"
+                      />
+                    </svg>
+                    Sending...
+                  </span>
+                ) : (
+                  "Send"
+                )}
               </Button>
-              <p className="mt-2 text-center">
-                Or Email me directly:{" "}
-                <Link className="text-indigo-500" to={"mailto:lintonevan@gmail.com"}>
-                  lintonevan@gmail.com
+
+              <div className="flex gap-4 items-center justify-center mt-6">
+                <Link
+                  title="Email"
+                  to={"mailto:lintonevan@gmail.com"}
+                  className="w-6 h-6 sm:w-7 sm:h-7 text-zinc-700 hover:text-indigo-500 hover:rotate-12 transition-all"
+                >
+                  <SiGmail className="w-full h-full" />
                 </Link>
-              </p>
+                <Link
+                  title="LinkedIn"
+                  target="_blank"
+                  to={"https://www.linkedin.com/in/evan-linton-04b170294/"}
+                  className="w-6 h-6 sm:w-7 sm:h-7 text-zinc-700 hover:text-indigo-500 hover:rotate-12 transition-all"
+                >
+                  <FaLinkedin className="w-full h-full" />
+                </Link>
+                <Link
+                  title="GitHub"
+                  target="_blank"
+                  to={"https://github.com/Lintee12"}
+                  className="w-6 h-6 sm:w-7 sm:h-7 text-zinc-700 hover:text-indigo-500 hover:rotate-12 transition-all"
+                >
+                  <FaGithub className="w-full h-full" />
+                </Link>
+              </div>
             </form>
           </div>
         </section>

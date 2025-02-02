@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+/* * {
   @apply font-medium text-zinc-800;
-}
+} */
 
 html,
 body {
-  @apply bg-white scroll-smooth;
+  @apply bg-white scroll-smooth font-medium text-zinc-800;
 }
 
 @keyframes fadeInOutSequence {

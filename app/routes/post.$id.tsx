@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "@remix-run/react";
 import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
-import { remark } from "remark";
-import remarkHtml from "remark-html";
-import matter from "gray-matter";
 import fs from "fs/promises";
 import path from "path";
-import { link } from "fs";
+import mammoth from "mammoth";
 
 type LoaderData = {
   title: string;
   id: string;
   contentHtml: string;
-  dateModified: string | null;
+  dateModified: string;
 };
 
 export async function loader({ params }: LoaderFunctionArgs): Promise<Response> {
@@ -23,22 +20,22 @@ export async function loader({ params }: LoaderFunctionArgs): Promise<Response> 
   }
 
   try {
-    const filePath = path.join(process.cwd(), "public/posts", `${id}.md`);
-    const markdown = await fs.readFile(filePath, "utf-8");
+    const filePath = path.join(process.cwd(), "public/posts", `${id}.docx`);
+    const fileBuffer = await fs.readFile(filePath);
 
-    const { content, data } = matter(markdown);
+    const { value: contentHtml } = await mammoth.convertToHtml({ buffer: fileBuffer });
 
-    const processedContent = await remark().use(remarkHtml).process(content);
-    const contentHtml = processedContent.toString();
+    const dateModified = new Date().toISOString();
+    const title = `Your Post Title`;
 
     return json<LoaderData>({
-      title: data.title || null,
+      title,
       id,
       contentHtml,
-      dateModified: data.dateModified || null,
+      dateModified,
     });
   } catch (err) {
-    console.error("Error loading markdown:", err);
+    console.error("Error loading DOCX:", err);
     throw new Response("Failed to load the post.", { status: 500 });
   }
 }
@@ -65,7 +62,13 @@ function Post() {
   return (
     <article className="p-4 w-full mt-20 min-h-screen">
       <div className="container mx-auto flex flex-col prose lg:prose-xl">
-        <p className="text-gray-500 text-lg">{dateModified}</p>
+        <p className="text-gray-500 text-lg">
+          {new Intl.DateTimeFormat("en-US", {
+            month: "long",
+            day: "2-digit",
+            year: "numeric",
+          }).format(new Date(dateModified))}
+        </p>
         <div id="post" dangerouslySetInnerHTML={{ __html: contentHtml }} />
       </div>
     </article>
