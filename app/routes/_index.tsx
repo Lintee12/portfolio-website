@@ -1,13 +1,13 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
-import { FormEvent, useState } from "react";
-import { IconContext } from "react-icons";
+import { FormEvent, useEffect, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import Button from "~/components/Button";
 import Navigation from "~/components/Navigation";
 import Skill from "~/components/Skill";
 import SkillsAnimation from "~/components/SkillsAnimationV2";
+
 export const meta: MetaFunction = () => {
   return [
     { title: "Evan Linton" },
