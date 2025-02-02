@@ -53,3 +53,17 @@ p {
 article a {
   color: #6366f1 !important;
 }
+
+.type-wait {
+  animation: blink-caret 0.8s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    @apply text-black;
+  }
+  50% {
+    @apply text-transparent;
+  }
+}

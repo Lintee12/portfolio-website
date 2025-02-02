@@ -7,7 +7,7 @@ import { SiGmail } from "react-icons/si";
 import Button from "~/components/Button";
 import Navigation from "~/components/Navigation";
 import Skill from "~/components/Skill";
-import SkillsAnimation from "~/components/SkillsAnimation";
+import SkillsAnimation from "~/components/SkillsAnimationV2";
 export const meta: MetaFunction = () => {
   return [
     { title: "Evan Linton" },
@@ -144,7 +144,7 @@ export default function Index() {
         <section id="skills" className="py-40 min-h-screen flex items-center">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold mb-8 text-center">My Skills</h2>
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mb-4">
               <SkillsAnimation
                 skills={[
                   "Communication",
