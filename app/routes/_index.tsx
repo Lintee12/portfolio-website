@@ -1,5 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+import { Link, useNavigate } from "@remix-run/react";
 import { FormEvent, useEffect, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
@@ -62,6 +62,7 @@ const projects = [
 ];
 
 export default function Index() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -110,7 +111,7 @@ export default function Index() {
       <div className="bg-gray-100 min-h-screen">
         {/* Hero */}
         <section id="hero" className="h-screen flex items-center justify-center text-center">
-          <div>
+          <div className="p-4">
             <h1 className="text-6xl font-bold mb-4">
               Hi, I'm{" "}
               <span className="from-indigo-500 to-violet-500 bg-gradient-to-r bg-clip-text text-transparent">
@@ -121,6 +122,20 @@ export default function Index() {
               An aspiring Network Administrator with a background in Programming and IT support. I
               am able to work efficiently in fast-paced, dynamic environments.
             </p>
+            <div className="flex gap-2 mt-4 w-full justify-center">
+              <Link
+                className="bg-indigo-500 hover:bg-indigo-600 p-3 px-5 rounded shadow text-white"
+                to={"#projects"}
+              >
+                My Projects
+              </Link>
+              <Link
+                className="bg-white hover:bg-zinc-100 p-3 px-5 rounded shadow"
+                to={"/documents"}
+              >
+                My Documents
+              </Link>
+            </div>
           </div>
         </section>
 
