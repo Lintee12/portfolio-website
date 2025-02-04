@@ -21,7 +21,7 @@ const skills = [
     img: "https://computernewb.com/w/images/cn_wiki/3/3e/Windows_Server_Logo.png",
     title: "Windows Server",
     description:
-      "I can mange windows server environments and implement tools like DNS, and Active Directory.",
+      "I can manage Windows server environments and implement DNS and Active Directory tools.",
   },
   {
     img: "https://cdn-icons-png.flaticon.com/512/17389/17389201.png",
@@ -32,19 +32,19 @@ const skills = [
     img: "https://static.thenounproject.com/png/4118837-200.png",
     title: "Command Line",
     description:
-      "I can navigate an Operating Systems like Linux and Windows with command line, and write Scripts in Powershell.",
+      "I can navigate operating systems like Linux and Windows using the command line and write scripts in PowerShell.",
   },
   {
     img: "https://cdn-icons-png.flaticon.com/512/4263/4263937.png",
     title: "Building LAN's",
     description:
-      "I can build local networks that allow easy communication between devices, utilizing VLAN and DHCP.",
+      "Utilizing VLAN and DHCP, I can build local networks that allow easy communication between devices.",
   },
   {
     img: "https://cdn-icons-png.flaticon.com/512/6062/6062646.png",
     title: "Programming/Scripting",
     description:
-      "I have been programming for years in languages like Javascript, C++, and Python. This is useful in any job involving IT.",
+      "I have been programming for years in languages like JavaScript, C++, and Python. This is useful in any job involving IT.",
   },
   {
     img: "https://cdn-icons-png.flaticon.com/512/14400/14400118.png ",
