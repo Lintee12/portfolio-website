@@ -24,12 +24,13 @@ export async function loader({ params }: LoaderFunctionArgs): Promise<Response> 
     const filePath = path.join(process.cwd(), "public/posts", `${id}.docx`);
     const fileBuffer = await fs.readFile(filePath);
 
+    const stats = await fs.stat(filePath);
+    const dateModified = stats.mtime.toISOString();
+
     const { value: contentHtml } = await mammoth.convertToHtml({ buffer: fileBuffer });
 
     const $ = cheerio.load(contentHtml);
     const title = $("h1").first().text().trim() || "Untitled Post";
-
-    const dateModified = new Date().toISOString();
 
     return json({
       title,
