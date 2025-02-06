@@ -66,7 +66,7 @@ function Post() {
   return (
     <article className="p-4 w-full mt-20 min-h-screen">
       <div className="container mx-auto flex flex-col prose lg:prose-xl">
-        <p className="text-gray-500 text-lg">
+        <p className="text-gray-500 text-lg hidden">
           {new Intl.DateTimeFormat("en-US", {
             month: "long",
             day: "2-digit",
