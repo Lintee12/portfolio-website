@@ -24,6 +24,9 @@ function Header(props: Props) {
         </Link>
 
         <nav className="hidden sm:flex space-x-4">
+          <Link to="/#" className="hover:text-indigo-600 font-semibold">
+            Home
+          </Link>
           <Link to="/#about" className="hover:text-indigo-600 font-semibold">
             About
           </Link>
@@ -77,7 +80,6 @@ function Header(props: Props) {
                 ? "translate-y-0 opacity-100 pointer-events-none"
                 : "translate-y-full opacity-0 pointer-events-none"
             }`}
-            aria-hidden={!isMenuOpen}
           >
             <button
               className="absolute top-4 right-4 p-2 text-gray-800 hover:text-black"
@@ -101,6 +103,13 @@ function Header(props: Props) {
             </button>
 
             <nav className="flex flex-col items-center space-y-6 pointer-events-auto">
+              <Link
+                to="/#"
+                className="text-2xl hover:text-indigo-600 font-semibold"
+                onClick={toggleMenu}
+              >
+                Home
+              </Link>
               <Link
                 to="/#about"
                 className="text-2xl hover:text-indigo-600 font-semibold"

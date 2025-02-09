@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLoaderData } from "@remix-run/react";
 import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import fs from "fs/promises";

@@ -8,6 +8,7 @@ import Navigation from "~/components/Navigation";
 import ScrollFade from "~/components/ScrollFade";
 import Skill from "~/components/Skill";
 import SkillsAnimation from "~/components/SkillsAnimationV2";
+import { projects, skills } from "~/data";
 
 export const meta: MetaFunction = () => {
   return [
@@ -15,60 +16,6 @@ export const meta: MetaFunction = () => {
     { name: "description", content: "Welcome to my portfolio website!" },
   ];
 };
-
-const skills = [
-  {
-    img: "https://computernewb.com/w/images/cn_wiki/3/3e/Windows_Server_Logo.png",
-    title: "Windows Server",
-    description:
-      "I can manage Windows server environments and implement DNS and Active Directory tools.",
-  },
-  {
-    img: "https://cdn-icons-png.flaticon.com/512/17389/17389201.png",
-    title: "Network Configuration",
-    description: "I can configure Cisco Routers and Switches to be secure and efficient.",
-  },
-  {
-    img: "https://static.thenounproject.com/png/4118837-200.png",
-    title: "Command Line",
-    description:
-      "I can navigate operating systems like Linux and Windows using the command line and write scripts in PowerShell.",
-  },
-  {
-    img: "https://cdn-icons-png.flaticon.com/512/4263/4263937.png",
-    title: "Building LAN's",
-    description:
-      "Utilizing VLAN and DHCP, I can build local networks that allow easy communication between devices.",
-  },
-  {
-    img: "https://cdn-icons-png.flaticon.com/512/6062/6062646.png",
-    title: "Programming/Scripting",
-    description:
-      "I have been programming for years in languages like JavaScript, C++, and Python. This is useful in any job involving IT.",
-  },
-  {
-    img: "https://cdn-icons-png.flaticon.com/512/14400/14400118.png ",
-    title: "Network Documentation",
-    description:
-      "I create and maintain standard network diagrams, configurations, and troubleshooting procedures.",
-  },
-];
-
-const projects = [
-  {
-    img: "https://cdn-icons-png.flaticon.com/512/8644/8644474.png",
-    title: "Portfolio Website",
-    description: "Created my portfolio website, to show off my skills and projects.",
-    link: "/post/1",
-  },
-  {
-    img: "https://cdn-icons-png.flaticon.com/512/1055/1055645.png",
-    title: "Industry Research",
-    description:
-      "Some research i've done on the IT industry, specifically the Network Administration field.",
-    link: "/post/2",
-  },
-];
 
 export default function Index() {
   const navigate = useNavigate();
@@ -222,7 +169,7 @@ export default function Index() {
             <div className="container mx-auto px-4">
               <h2 className="text-4xl font-bold mb-8 text-center">My Projects and Assignments</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 max-w-6xl justify-center gap-4 mx-auto">
-                {projects.map((project) => {
+                {projects.slice(-6).map((project) => {
                   return (
                     <Skill
                       img={project.img}
@@ -231,9 +178,17 @@ export default function Index() {
                       key={project.title}
                       title={project.title}
                       description={project.description}
-                    ></Skill>
+                    />
                   );
                 })}
+              </div>
+              <div className="flex w-full justify-center mt-2 sm:mt-4">
+                <Link
+                  className="bg-indigo-500 hover:bg-indigo-600 p-3 px-5 rounded shadow text-white no-underline"
+                  to={"/projects"}
+                >
+                  See All Projects
+                </Link>
               </div>
             </div>
           </ScrollFade>
